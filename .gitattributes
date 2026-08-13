@@ -1,0 +1,9 @@
+# Arquivos de configuracao do Cloudflare Pages: sempre LF, em qualquer sistema.
+# O parser deles le linha a linha e CRLF e risco desnecessario.
+_headers    text eol=lf
+_redirects  text eol=lf
+
+# Binarios: o git nao deve tentar converter nada aqui.
+*.woff2  binary
+*.png    binary
+*.ico    binary

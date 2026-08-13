@@ -1,0 +1,11 @@
+# Sistema operacional
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Nada de build aqui: o site e servido exatamente como esta no repositorio.

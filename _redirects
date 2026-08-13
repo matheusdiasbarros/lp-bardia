@@ -1,0 +1,18 @@
+# =========================================================================
+# Redirecionamentos — lido automaticamente pelo Cloudflare Pages.
+# Formato:  /origem  /destino  codigo
+#
+# ATENCAO: este arquivo so casa CAMINHOS, nao dominios. O redirect de
+# www.bardiasistemas.com.br -> bardiasistemas.com.br NAO se faz aqui; ele e
+# feito no painel da Cloudflare em  Rules > Redirect Rules  (veja o README).
+# =========================================================================
+
+# Atalhos uteis para divulgacao (ex.: colar /whatsapp num cartao ou story)
+/whatsapp   https://wa.me/5562936181619   302
+/wpp        https://wa.me/5562936181619   302
+/perfilvivo https://perfilvivo.com.br     302
+
+# Ancoras da propria pagina, para quem digitar o caminho na mao
+/contato    /#contato    302
+/produtos   /#produtos   302
+/sobre      /#sobre      302

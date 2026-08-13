@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerador de imagens — BARDiA Sistemas</title>
+<style>
+  :root{
+    --bg:#f6f6f7; --surface:#fff; --text:#0b0b0c; --muted:#52525b;
+    --border:#e5e5e8; --accent:#c2410c; --accent-ink:#fff;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0b0b0c; --surface:#141416; --text:#f4f4f5; --muted:#a1a1aa;
+           --border:#27272a; --accent:#fb923c; --accent-ink:#1a0f05; }
+  }
+  @font-face{
+    font-family:'Inter'; font-style:normal; font-weight:100 900; font-display:swap;
+    src:url('../assets/fonts/inter-latin.woff2') format('woff2');
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:40px 20px 80px; background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; line-height:1.6;
+  }
+  .status{
+    font-size:.82rem;color:var(--muted);margin:10px 0 0;
+    display:flex;align-items:center;gap:7px;
+  }
+  .status b{font-weight:600;color:var(--text)}
+  .wrap{max-width:1000px;margin-inline:auto}
+  h1{font-size:1.7rem;letter-spacing:-.02em;margin:0 0 6px}
+  h2{font-size:1.05rem;letter-spacing:-.01em;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 28px;font-size:.96rem;max-width:70ch}
+  .painel{
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:20px;margin-bottom:18px;
+  }
+  .painel-topo{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .meta{color:var(--muted);font-size:.86rem;margin:0}
+  canvas{
+    max-width:100%;height:auto;border-radius:10px;border:1px solid var(--border);
+    background-image:linear-gradient(45deg,#00000010 25%,transparent 25%,transparent 75%,#00000010 75%),
+                     linear-gradient(45deg,#00000010 25%,transparent 25%,transparent 75%,#00000010 75%);
+    background-size:16px 16px;background-position:0 0,8px 8px;
+  }
+  .icones{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end}
+  .icone{text-align:center}
+  .icone canvas{display:block;margin-bottom:8px}
+  button{
+    font:inherit;font-size:.9rem;font-weight:600;cursor:pointer;
+    background:var(--accent);color:var(--accent-ink);border:0;
+    padding:10px 16px;border-radius:9px;
+  }
+  button:hover{filter:brightness(1.06)}
+  button.sec{background:transparent;color:var(--text);border:1px solid var(--border)}
+  .opcoes{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .opcoes label{
+    display:inline-flex;align-items:center;gap:7px;font-size:.88rem;
+    border:1px solid var(--border);padding:7px 13px;border-radius:999px;cursor:pointer;
+  }
+  .opcoes input{accent-color:var(--accent)}
+  .aviso{
+    background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);
+    border-radius:10px;padding:16px 18px;font-size:.92rem;color:var(--muted);margin-top:26px;
+  }
+  code{
+    font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.87em;
+    background:var(--bg);padding:2px 6px;border-radius:5px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Gerador de imagens da BARDiA</h1>
+  <p class="sub">
+    Desenha as imagens que faltam usando os traçados reais da sua logo — nada de captura de tela.
+    Clique em cada botão e salve o arquivo <strong>com o nome exato indicado</strong> dentro de
+    <code>assets/img/</code>. Esta página é só uma ferramenta local: ela não faz parte do site.
+  </p>
+
+  <!-- ============================ OG IMAGE ============================ -->
+  <section class="painel">
+    <div class="painel-topo">
+      <div>
+        <h2>Imagem de compartilhamento</h2>
+        <p class="meta">1200 × 630 · aparece no WhatsApp, LinkedIn, Facebook e X</p>
+      </div>
+      <button id="btn-og">Baixar og-image.png</button>
+    </div>
+    <canvas id="c-og" width="1200" height="630"></canvas>
+    <p class="status" id="status-fonte"></p>
+  </section>
+
+  <!-- ============================ ICONES ============================ -->
+  <section class="painel">
+    <div class="painel-topo">
+      <div>
+        <h2>Ícones</h2>
+        <p class="meta">Aba do navegador, tela de início do celular e resultado de busca</p>
+      </div>
+      <button id="btn-todos">Baixar os 4 de uma vez</button>
+    </div>
+
+    <div class="opcoes" role="radiogroup" aria-label="Fundo dos ícones">
+      <label><input type="radio" name="fundo" value="branco" checked> Fundo branco</label>
+      <label><input type="radio" name="fundo" value="ambar"> Fundo âmbar</label>
+      <label><input type="radio" name="fundo" value="preto"> Fundo preto</label>
+      <label><input type="radio" name="fundo" value="nenhum"> Sem fundo</label>
+    </div>
+
+    <div class="icones">
+      <div class="icone">
+        <canvas id="c-32" width="32" height="32" style="width:64px;image-rendering:pixelated"></canvas>
+        <button class="sec" data-alvo="c-32" data-nome="favicon-32.png">favicon-32.png</button>
+      </div>
+      <div class="icone">
+        <canvas id="c-180" width="180" height="180" style="width:120px"></canvas>
+        <button class="sec" data-alvo="c-180" data-nome="apple-touch-icon.png">apple-touch-icon.png</button>
+      </div>
+      <div class="icone">
+        <canvas id="c-192" width="192" height="192" style="width:120px"></canvas>
+        <button class="sec" data-alvo="c-192" data-nome="logo-192.png">logo-192.png</button>
+      </div>
+      <div class="icone">
+        <canvas id="c-512" width="512" height="512" style="width:140px"></canvas>
+        <button class="sec" data-alvo="c-512" data-nome="logo-512.png">logo-512.png</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="aviso">
+    <strong>Onde salvar:</strong> os cinco arquivos vão para <code>assets/img/</code>, ao lado de
+    <code>logo.svg</code> e <code>logo-mark.svg</code>. O navegador provavelmente salva em
+    <em>Downloads</em> — mova de lá para a pasta certa, sem renomear.
+    O <code>logo-512.png</code> é o que o Google usa como logo da empresa nos resultados de busca,
+    então prefira deixá-lo com fundo branco ou âmbar, nunca sem fundo.
+  </div>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------------------------------------------------------------------
+     Tracados reais, copiados de assets/img/logo.svg e logo-mark.svg.
+     Se um dia a logo mudar, troque estas strings e a pagina toda acompanha.
+     --------------------------------------------------------------------- */
+  var LOGO = {
+    viewBox: [816, 171],
+    transform: function (ctx) { ctx.translate(0, 171); ctx.scale(0.1, -0.1); },
+    paths: [
+      "M1905 1690 c-99 -10 -112 -15 -131 -52 -35 -68 -115 -289 -264 -733 -87 -259 -186 -548 -219 -643 -66 -187 -72 -225 -42 -242 21 -11 341 -12 451 -1 58 5 66 9 86 39 12 18 41 82 64 142 50 129 36 122 248 124 160 1 150 8 206 -146 21 -58 46 -115 55 -127 26 -34 77 -41 323 -41 l228 0 6 25 c4 18 -14 84 -61 218 -143 411 -261 754 -360 1048 -56 168 -110 320 -119 338 -9 17 -29 36 -44 42 -35 14 -324 20 -427 9z",
+      "M3031 1682 c-8 -15 -11 -258 -11 -804 0 -923 -11 -841 117 -854 103 -9 433 2 447 16 6 6 13 68 16 138 l5 127 28 -94 c38 -126 61 -169 95 -178 35 -10 489 -10 523 -1 15 4 30 15 33 24 3 9 -46 147 -114 319 -66 166 -120 311 -120 321 0 11 25 69 55 129 64 127 80 197 71 321 -12 161 -74 293 -187 398 -37 34 -92 74 -124 90 -104 51 -162 58 -507 63 -310 5 -316 5 -327 -15z",
+      "M7145 1690 c-99 -10 -112 -15 -131 -52 -35 -68 -115 -289 -264 -733 -87 -259 -186 -548 -219 -643 -66 -187 -72 -225 -42 -242 21 -11 341 -12 451 -1 58 5 66 9 86 39 12 18 41 82 64 142 50 129 36 122 248 124 160 1 150 8 206 -146 21 -58 46 -115 55 -127 26 -34 77 -41 323 -41 l228 0 6 25 c4 18 -14 84 -61 218 -143 411 -261 754 -360 1048 -56 168 -110 320 -119 338 -9 17 -29 36 -44 42 -35 14 -324 20 -427 9z",
+      "M56 1682 c-21 -5 -32 -16 -39 -37 -13 -39 -20 -1416 -8 -1531 5 -47 12 -88 16 -92 4 -4 169 -7 368 -7 315 0 370 2 426 18 89 24 155 62 220 127 79 78 113 153 119 258 8 151 -44 273 -162 379 l-58 52 63 59 c117 110 166 228 156 374 -13 190 -161 355 -347 388 -65 12 -712 22 -754 12z",
+      "M4444 1679 c-61 -17 -59 8 -62 -814 -3 -840 -3 -832 58 -848 56 -15 631 -1 715 17 217 48 386 209 474 453 93 256 75 596 -44 833 -116 230 -263 328 -540 360 -109 12 -558 12 -601 -1z",
+      "M5976 1666 c-148 -63 -205 -171 -164 -310 19 -63 92 -131 164 -152 76 -22 193 -16 249 13 83 44 135 130 137 231 3 97 -41 160 -144 207 -84 38 -168 42 -242 11z",
+      "M5840 1092 c-31 -6 -35 -11 -42 -47 -10 -57 -14 -880 -4 -942 14 -89 9 -88 212 -92 98 -1 215 0 260 4 l83 7 13 36 c10 28 13 146 13 502 0 256 -3 477 -7 491 -4 15 -16 30 -25 34 -23 10 -457 16 -503 7z"
+    ]
+  };
+
+  var MARCA = {
+    viewBox: [500, 500],
+    transform: function (ctx) { ctx.translate(0, 500); ctx.scale(0.1, -0.1); },
+    paths: [
+      "M400 4639 c-156 -13 -212 -27 -227 -59 -44 -93 -56 -493 -50 -1600 3 -520 2 -1122 -2 -1337 -9 -572 2 -950 35 -1210 5 -41 6 -42 57 -52 115 -24 296 -32 817 -38 460 -5 577 -3 750 11 446 37 630 91 845 250 339 252 500 600 456 985 -31 262 -141 492 -336 699 -47 50 -112 107 -144 126 -31 19 -65 44 -75 55 -24 26 -24 26 113 140 189 160 334 373 395 582 96 332 39 691 -151 958 -64 89 -196 218 -282 275 -166 111 -334 166 -561 185 -370 31 -1402 50 -1640 30z",
+      "M4000 4631 c-151 -28 -311 -113 -426 -226 -134 -131 -181 -250 -171 -435 18 -353 276 -584 677 -606 244 -14 432 50 576 194 106 107 177 273 190 448 26 334 -279 609 -699 628 -56 3 -122 1 -147 -3z",
+      "M3664 3130 c-164 -10 -241 -25 -254 -50 -35 -65 -58 -1904 -29 -2348 10 -157 29 -285 49 -321 26 -50 236 -65 775 -57 370 5 530 14 586 31 77 25 92 296 86 1565 -4 923 -8 1044 -40 1109 -16 33 -63 46 -213 60 -153 15 -790 22 -960 11z"
+    ]
+  };
+
+  var AMBAR = '#c2410c';   // mesma cor de --accent no styles.css (tema claro)
+  var TINTA = '#0b0b0c';
+
+  /* Pilha de fonte do canvas. Vira Inter se o arquivo local carregar; se nao
+     carregar, continua na fonte do sistema e a imagem sai igualmente boa. */
+  var FONTE = 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif';
+
+  /* Desenha uma figura preenchendo um retangulo de destino, sem distorcer. */
+  function desenhar(ctx, figura, cor, x, y, largura) {
+    var escala = largura / figura.viewBox[0];
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.scale(escala, escala);
+    figura.transform(ctx);
+    ctx.fillStyle = cor;
+    for (var i = 0; i < figura.paths.length; i++) {
+      ctx.fill(new Path2D(figura.paths[i]));
+    }
+    ctx.restore();
+    return largura * (figura.viewBox[1] / figura.viewBox[0]);
+  }
+
+  /* Descobre a caixa real ocupada pelo desenho (o SVG pode ter margem sobrando).
+     Rasteriza uma vez fora da tela e varre os pixels opacos. */
+  var cacheCaixa = {};
+  function caixaReal(figura, chave) {
+    if (cacheCaixa[chave]) { return cacheCaixa[chave]; }
+    var n = 300;
+    var off = document.createElement('canvas');
+    off.width = n;
+    off.height = Math.round(n * figura.viewBox[1] / figura.viewBox[0]);
+    var octx = off.getContext('2d');
+    desenhar(octx, figura, '#000', 0, 0, n);
+
+    var d = octx.getImageData(0, 0, off.width, off.height).data;
+    var x0 = off.width, y0 = off.height, x1 = -1, y1 = -1;
+    for (var y = 0; y < off.height; y++) {
+      for (var x = 0; x < off.width; x++) {
+        if (d[(y * off.width + x) * 4 + 3] > 12) {
+          if (x < x0) { x0 = x; }
+          if (x > x1) { x1 = x; }
+          if (y < y0) { y0 = y; }
+          if (y > y1) { y1 = y; }
+        }
+      }
+    }
+    var k = figura.viewBox[0] / n;   // volta para a escala do viewBox
+    var caixa = { x: x0 * k, y: y0 * k, w: (x1 - x0 + 1) * k, h: (y1 - y0 + 1) * k };
+    cacheCaixa[chave] = caixa;
+    return caixa;
+  }
+
+  /* Desenha a figura centralizada num quadrado, respeitando uma margem. */
+  function centralizar(ctx, figura, chave, cor, lado, margem) {
+    var caixa = caixaReal(figura, chave);
+    var util = lado * (1 - 2 * margem);
+    var escala = Math.min(util / caixa.w, util / caixa.h);
+    var largura = figura.viewBox[0] * escala;
+    var x = (lado - caixa.w * escala) / 2 - caixa.x * escala;
+    var y = (lado - caixa.h * escala) / 2 - caixa.y * escala;
+    desenhar(ctx, figura, cor, x, y, largura);
+  }
+
+  /* ------------------------------ OG IMAGE ------------------------------ */
+  function montarOG() {
+    var c = document.getElementById('c-og');
+    var ctx = c.getContext('2d');
+    var L = 1200, A = 630;
+
+    ctx.clearRect(0, 0, L, A);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, L, A);
+
+    // brilho ambar no canto superior direito
+    var g = ctx.createRadialGradient(1010, 40, 0, 1010, 40, 620);
+    g.addColorStop(0, 'rgba(194,65,12,0.16)');
+    g.addColorStop(1, 'rgba(194,65,12,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, L, A);
+
+    // monograma gigante e bem apagado, como marca d'agua a direita
+    ctx.save();
+    ctx.globalAlpha = 0.05;
+    ctx.translate(792, 100);
+    centralizar(ctx, MARCA, 'marca', TINTA, 430, 0);
+    ctx.restore();
+
+    // lettering BARDiA
+    desenhar(ctx, LOGO, TINTA, 88, 84, 300);
+
+    // titulo
+    ctx.fillStyle = TINTA;
+    ctx.textBaseline = 'alphabetic';
+    ctx.font = '700 74px ' + FONTE;
+    ctx.fillText('Sistemas web sob medida', 88, 320);
+
+    // subtitulo
+    ctx.fillStyle = '#52525b';
+    ctx.font = '400 31px ' + FONTE;
+    ctx.fillText('Produtos próprios e sistemas de gestão feitos', 88, 384);
+    ctx.fillText('para o processo que a sua empresa já usa.', 88, 428);
+
+    // assinatura
+    ctx.fillStyle = AMBAR;
+    ctx.font = '600 27px ' + FONTE;
+    ctx.fillText('bardiasistemas.com.br  ·  Goiânia-GO', 88, 522);
+
+    // faixa ambar no rodape
+    ctx.fillStyle = AMBAR;
+    ctx.fillRect(0, A - 12, L, 12);
+  }
+
+  /* ------------------------------ ICONES ------------------------------ */
+  function fundoEscolhido() {
+    var r = document.querySelector('input[name="fundo"]:checked');
+    return r ? r.value : 'branco';
+  }
+
+  function montarIcone(id, lado, margem) {
+    var c = document.getElementById(id);
+    var ctx = c.getContext('2d');
+    var fundo = fundoEscolhido();
+    var corMarca = TINTA;
+
+    ctx.clearRect(0, 0, lado, lado);
+
+    if (fundo === 'branco') { ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, lado, lado); }
+    else if (fundo === 'ambar') { ctx.fillStyle = AMBAR; ctx.fillRect(0, 0, lado, lado); corMarca = '#ffffff'; }
+    else if (fundo === 'preto') { ctx.fillStyle = TINTA; ctx.fillRect(0, 0, lado, lado); corMarca = '#ffffff'; }
+
+    centralizar(ctx, MARCA, 'marca', corMarca, lado, margem);
+  }
+
+  function montarIcones() {
+    montarIcone('c-32', 32, 0.06);
+    montarIcone('c-180', 180, 0.14);
+    montarIcone('c-192', 192, 0.14);
+    montarIcone('c-512', 512, 0.14);
+  }
+
+  /* ------------------------------ DOWNLOAD ------------------------------ */
+  function baixar(canvas, nome) {
+    canvas.toBlob(function (blob) {
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = nome;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+    }, 'image/png');
+  }
+
+  document.getElementById('btn-og').addEventListener('click', function () {
+    baixar(document.getElementById('c-og'), 'og-image.png');
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('button[data-alvo]'), function (b) {
+    b.addEventListener('click', function () {
+      baixar(document.getElementById(b.dataset.alvo), b.dataset.nome);
+    });
+  });
+
+  document.getElementById('btn-todos').addEventListener('click', function () {
+    var lista = [['c-32', 'favicon-32.png'], ['c-180', 'apple-touch-icon.png'],
+                 ['c-192', 'logo-192.png'], ['c-512', 'logo-512.png']];
+    lista.forEach(function (item, i) {
+      setTimeout(function () { baixar(document.getElementById(item[0]), item[1]); }, i * 400);
+    });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('input[name="fundo"]'), function (r) {
+    r.addEventListener('change', montarIcones);
+  });
+
+  /* -------------------------- INICIO ---------------------------------
+     Tenta carregar a Inter local antes de desenhar, para o OG sair na mesma
+     fonte do site. Abrindo esta pagina com dois cliques (file://), o Chrome
+     costuma recusar fontes locais por politica de origem — nesse caso a
+     imagem sai na fonte do sistema, que tambem fica boa. Para garantir a
+     Inter, abra a ferramenta pelo endereco do site ja publicado.
+     -------------------------------------------------------------------- */
+  function desenharTudo() { montarOG(); montarIcones(); }
+
+  function avisar(texto, ok) {
+    var el = document.getElementById('status-fonte');
+    if (el) { el.innerHTML = (ok ? '&#10003;' : '&#9432;') + ' <span>' + texto + '</span>'; }
+  }
+
+  function iniciar() {
+    if (!window.FontFace || !document.fonts) { desenharTudo(); avisar('Desenhado com a fonte do sistema.', false); return; }
+
+    var fonte = new FontFace('Inter', "url('../assets/fonts/inter-latin.woff2')", { weight: '100 900' });
+    fonte.load().then(function (carregada) {
+      document.fonts.add(carregada);
+      FONTE = "'Inter', " + FONTE;
+      desenharTudo();
+      avisar('Desenhado com a <b>Inter</b>, a mesma fonte do site.', true);
+    }).catch(function () {
+      desenharTudo();
+      avisar('Fonte local bloqueada pelo navegador (arquivo aberto do disco) — desenhado com a fonte do sistema. Fica bom do mesmo jeito.', false);
+    });
+  }
+
+  iniciar();
+})();
+</script>
+</body>
+</html>

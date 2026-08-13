@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>BARDiA Sistemas — Sistemas web sob medida em Goiânia-GO</title>
+<meta name="description" content="BARDiA Sistemas: empresa de software em Goiânia-GO. Desenvolvemos sistemas web sob medida para o processo da sua empresa e mantemos produtos próprios no ar, como o PerfilVivo.">
+<meta name="author" content="BARDiA Sistemas">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
+
+<link rel="canonical" href="https://bardiasistemas.com.br/">
+
+<!-- Icones. favicon.svg e o quadrado ambar com o monograma branco — o mesmo
+     desenho dos PNGs, para a aba nao mudar de cara conforme o navegador.
+     (logo-mark.svg continua existindo como logo pura, sem fundo.) -->
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- A fonte e servida do proprio dominio. O preload faz o navegador comecar a
+     baixa-la junto com o CSS, em vez de so depois de interpretar a folha de
+     estilo. O atributo crossorigin e obrigatorio em preload de fonte, mesmo
+     sendo do mesmo dominio — sem ele o arquivo e baixado duas vezes. -->
+<link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BARDiA Sistemas">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://bardiasistemas.com.br/">
+<meta property="og:title" content="BARDiA Sistemas — Sistemas web sob medida em Goiânia-GO">
+<meta property="og:description" content="Empresa de software com produto próprio no ar (PerfilVivo) e sistemas web sob medida, construídos em volta do processo que a sua empresa já usa.">
+<meta property="og:image" content="https://bardiasistemas.com.br/assets/img/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BARDiA Sistemas — sistemas web sob medida">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BARDiA Sistemas — Sistemas web sob medida em Goiânia-GO">
+<meta name="twitter:description" content="Empresa de software com produto próprio no ar (PerfilVivo) e sistemas web sob medida, construídos em volta do processo que a sua empresa já usa.">
+<meta name="twitter:image" content="https://bardiasistemas.com.br/assets/img/og-image.png">
+<meta name="twitter:image:alt" content="BARDiA Sistemas — sistemas web sob medida">
+
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<!-- Marca o documento como "com JavaScript" antes da primeira pintura. E o que
+     autoriza o CSS a esconder os blocos .reveal; sem JS, nada some. -->
+<script>document.documentElement.classList.add('js');</script>
+
+<script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+<header class="site-header" id="topo">
+  <div class="wrap header-inner">
+
+    <a class="brand" href="#topo" aria-label="BARDiA Sistemas — voltar ao início">
+      <img class="brand-logo" src="assets/img/logo.svg" alt="BARDiA" width="816" height="171">
+      <span class="brand-suffix">Sistemas</span>
+    </a>
+
+    <nav class="nav" id="nav-principal" aria-label="Navegação principal">
+      <ul class="nav-list">
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#sob-medida">Sistemas sob medida</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <a class="btn btn--primary btn--sm"
+         href="https://wa.me/5562936181619?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20BARDiA%20Sistemas%20e%20gostaria%20de%20falar%20com%20voc%C3%AAs."
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Z"/><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.56-.35Z"/></svg>
+        Falar com a gente
+      </a>
+    </nav>
+
+    <button class="nav-toggle" id="nav-toggle" type="button"
+            aria-controls="nav-principal" aria-expanded="false" aria-label="Abrir menu de navegação">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+
+        <p class="eyebrow reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          Empresa de software · Goiânia, GO
+        </p>
+
+        <h1 class="reveal" data-delay="1">Software feito para resolver um problema real do seu negócio</h1>
+
+        <p class="lead reveal" data-delay="2">
+          Criamos e mantemos produtos próprios no ar — hoje o <strong>PerfilVivo</strong> — e
+          desenvolvemos sistemas web sob medida, construídos em volta do processo que a sua empresa já usa.
+        </p>
+
+        <div class="btn-row reveal" data-delay="3">
+          <a class="btn btn--primary" href="https://perfilvivo.com.br" target="_blank" rel="noopener">
+            Conhecer o PerfilVivo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a class="btn btn--ghost"
+             href="https://wa.me/5562936181619?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20BARDiA%20Sistemas%20e%20quero%20falar%20sobre%20um%20projeto%20de%20sistema%20sob%20medida."
+             target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Z"/><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.56-.35Z"/></svg>
+            Falar sobre meu projeto
+          </a>
+        </div>
+
+        <ul class="facts reveal" data-delay="3">
+          <li class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg>
+            Produto próprio em produção
+          </li>
+          <li class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg>
+            Sistemas web sob medida
+          </li>
+          <li class="fact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Você fala direto com quem desenvolve
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       PRODUTOS
+       ========================================================= -->
+  <section class="section section--alt" id="produtos" aria-labelledby="produtos-titulo">
+    <div class="wrap">
+
+      <div class="section-head reveal">
+        <h2 id="produtos-titulo">Nossos produtos</h2>
+        <p class="lead">
+          Software nosso, no ar, com clientes usando. É o que sustenta tudo o que fazemos:
+          quem opera um produto todo dia sabe o que quebra em produção.
+        </p>
+      </div>
+
+      <div class="grid grid--2">
+
+        <!-- ---------- Card de produto: PerfilVivo ---------- -->
+        <article class="card card--link reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="2.6"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21"/><path d="M6.4 6.4a8 8 0 0 0 0 11.2M17.6 17.6a8 8 0 0 0 0-11.2"/>
+            </svg>
+          </div>
+          <p class="product-tag"><span class="dot dot--live"></span> No ar</p>
+          <h3>PerfilVivo</h3>
+          <p class="muted">
+            Monitor de disponibilidade de perfis do Instagram: você cadastra os perfis que saíram do ar
+            e o sistema avisa por e-mail no instante em que voltam.
+          </p>
+          <ul class="list list--check">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Checagem contínua, dia e noite — alerta por e-mail em minutos, inclusive de madrugada
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Modo agência: e-mail white label com nome, logo e cor da sua marca, e atalho de WhatsApp para o dono do perfil
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Histórico de quedas e retornos: o que aconteceu com cada perfil e quando
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Checagem pública e conservadora: sem login, sem automação de conta e sem raspagem de dados
+            </li>
+          </ul>
+          <a class="card-link" href="https://perfilvivo.com.br" target="_blank" rel="noopener">
+            Acessar perfilvivo.com.br
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </article>
+
+        <!-- =========================================================================
+             PROXIMO PRODUTO — quando lancar, DUPLIQUE todo o bloco
+             article.card.card--link do PerfilVivo (acima), cole exatamente AQUI
+             (antes do card "Em desenvolvimento") e troque: icone SVG, a tag
+             "No ar", o titulo, o paragrafo, os 4 itens da lista e o link externo.
+             Com 3 ou mais produtos o grid vira 3 colunas sozinho — e ai voce pode
+             simplesmente apagar o card "Em desenvolvimento" abaixo.
+             ========================================================================= -->
+
+        <!-- ---------- Placeholder discreto ---------- -->
+        <article class="card card--soon reveal" data-delay="1">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <h3>Em desenvolvimento</h3>
+          <p>
+            O próximo produto da BARDiA está sendo construído. Ele nasce do mesmo lugar que o PerfilVivo:
+            um problema concreto que a gente viu de perto e ainda não tinha uma ferramenta decente para resolver.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SISTEMAS SOB MEDIDA
+       ========================================================= -->
+  <section class="section" id="sob-medida" aria-labelledby="sob-medida-titulo">
+    <div class="wrap">
+
+      <div class="section-head reveal">
+        <p class="eyebrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4"/></svg>
+          Desenvolvimento sob medida
+        </p>
+        <h2 id="sob-medida-titulo">Sistemas web feitos para o seu processo</h2>
+        <p class="lead">
+          Sistema de gestão de prateleira obriga a empresa a mudar o jeito de trabalhar para caber no software.
+          A gente faz o contrário: mapeamos o processo que já funciona aí dentro e construímos o sistema em volta dele.
+        </p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-col compare--off reveal">
+          <h3>Software de prateleira</h3>
+          <ul class="list list--x">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+              Sua equipe adapta a rotina ao sistema — e cria planilhas paralelas para o que ele não faz
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+              Você paga por dezenas de módulos que nunca vai abrir
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+              O relatório que a diretoria pede simplesmente não existe na tela
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+              Ajuste ou integração depende do roadmap de outra empresa, sem prazo
+            </li>
+          </ul>
+        </div>
+
+        <div class="compare-col compare--on reveal" data-delay="1">
+          <h3>Sistema sob medida BARDiA</h3>
+          <ul class="list list--check">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              As telas seguem o fluxo que a sua equipe já usa — menos treinamento, menos erro de digitação
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Só o que a operação usa de verdade, sem menu cheio de função morta
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Painéis e relatórios com os indicadores que você acompanha, do jeito que você lê
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Precisou mudar porque o negócio mudou? Fala com a gente e a gente muda
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid--3">
+
+        <div class="feature reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          </div>
+          <div>
+            <h3>Clientes e pedidos</h3>
+            <p>Cadastro, histórico, status de cada pedido e o que está travado — tudo em um lugar só, no lugar do caderno e da planilha compartilhada.</p>
+          </div>
+        </div>
+
+        <div class="feature reveal" data-delay="1">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V7M17 15v-6"/></svg>
+          </div>
+          <div>
+            <h3>Painéis e relatórios</h3>
+            <p>Os números que você olha toda semana, calculados do mesmo jeito que a sua empresa calcula, exportáveis quando precisar.</p>
+          </div>
+        </div>
+
+        <div class="feature reveal" data-delay="2">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4.5 13H11l-1 9 8.5-11H12l1-9Z"/></svg>
+          </div>
+          <div>
+            <h3>Automação de rotina</h3>
+            <p>Aquele trabalho repetitivo de toda segunda-feira — e-mail, cobrança, atualização de status, geração de documento — feito pelo sistema.</p>
+          </div>
+        </div>
+
+        <div class="feature reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17H7a5 5 0 0 1 0-10h2M15 7h2a5 5 0 0 1 0 10h-2M8 12h8"/></svg>
+          </div>
+          <div>
+            <h3>Integrações</h3>
+            <p>Conversa com as ferramentas e APIs que a empresa já usa, para o dado não ser digitado duas vezes em dois lugares diferentes.</p>
+          </div>
+        </div>
+
+        <div class="feature reveal" data-delay="1">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+          </div>
+          <div>
+            <h3>Acesso por perfil</h3>
+            <p>Cada pessoa enxerga o que é da função dela. Vendedor, financeiro, produção e direção não precisam ver a mesma tela.</p>
+          </div>
+        </div>
+
+        <div class="feature reveal" data-delay="2">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+          </div>
+          <div>
+            <h3>Funciona no celular</h3>
+            <p>Quem está na rua, na obra ou no balcão registra direto pelo telefone, sem app para instalar — é o mesmo sistema, pelo navegador.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cta-panel reveal">
+        <div>
+          <h3>Me conta como funciona hoje</h3>
+          <p>
+            Descreva o processo do jeito que ele acontece — com as gambiarras e as planilhas.
+            É a partir daí que a gente monta o escopo e diz o que dá para fazer.
+          </p>
+        </div>
+        <a class="btn btn--primary"
+           href="https://wa.me/5562936181619?text=Ol%C3%A1!%20Quero%20um%20sistema%20sob%20medida%20para%20a%20minha%20empresa.%20Posso%20te%20contar%20como%20funciona%20o%20nosso%20processo%20hoje%3F"
+           target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Z"/><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.56-.35Z"/></svg>
+          Falar sobre meu projeto
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       COMO TRABALHAMOS
+       ========================================================= -->
+  <section class="section section--alt" id="processo" aria-labelledby="processo-titulo">
+    <div class="wrap">
+
+      <div class="section-head center reveal">
+        <h2 id="processo-titulo">Como trabalhamos</h2>
+        <p class="lead">Quatro etapas, sem mistério e sem reunião que não leva a lugar nenhum.</p>
+      </div>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <div class="step-num" aria-hidden="true">1</div>
+          <h3>Conversa inicial</h3>
+          <p>Entendemos o processo como ele é hoje: quem faz o quê, onde trava e o que já está funcionando bem e não deve mudar.</p>
+        </li>
+        <li class="step reveal" data-delay="1">
+          <div class="step-num" aria-hidden="true">2</div>
+          <h3>Proposta com escopo e prazo</h3>
+          <p>Você recebe por escrito o que será construído, em quais etapas, com prazo e valor. Sem surpresa no meio do caminho.</p>
+        </li>
+        <li class="step reveal" data-delay="2">
+          <div class="step-num" aria-hidden="true">3</div>
+          <h3>Desenvolvimento com entregas parciais</h3>
+          <p>Você acompanha o sistema funcionando por partes, testa cedo e corrige o rumo antes de estar tudo pronto.</p>
+        </li>
+        <li class="step reveal" data-delay="3">
+          <div class="step-num" aria-hidden="true">4</div>
+          <h3>Publicação e suporte</h3>
+          <p>Colocamos no ar, acompanhamos o uso real e seguimos disponíveis para ajuste, correção e evolução do sistema.</p>
+        </li>
+      </ol>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SOBRE
+       ========================================================= -->
+  <section class="section" id="sobre" aria-labelledby="sobre-titulo">
+    <div class="wrap">
+      <div class="about">
+
+        <div class="reveal">
+          <h2 id="sobre-titulo">Sobre a BARDiA</h2>
+          <p>
+            A <strong>BARDiA Sistemas</strong> é uma empresa de software de Goiânia. Fazemos duas coisas:
+            mantemos produtos próprios no ar — hoje o PerfilVivo — e desenvolvemos sistemas web sob medida
+            para empresas que já têm um jeito de trabalhar e precisam de um software que respeite isso.
+          </p>
+          <p>
+            As duas frentes se alimentam. Manter um SaaS em produção cobra disciplina que projeto de vitrine
+            não cobra: e-mail que precisa chegar, checagem que roda de madrugada, erro que aparece no fim de
+            semana, dado que não pode se perder. É essa mesma régua que aplicamos no sistema que construímos
+            para você.
+          </p>
+          <p>
+            Somos uma equipe pequena e é isso que permite conversa direta com quem escreve o código.
+            Preferimos dizer o que não dá para fazer no prazo do que prometer e entregar pela metade.
+          </p>
+        </div>
+
+        <aside class="about-side reveal" data-delay="1">
+          <h3>Em resumo</h3>
+          <ul class="list list--check">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Produto próprio no ar, com clientes usando: PerfilVivo
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Sistemas web sob medida para gestão do negócio
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Escopo, prazo e valor por escrito antes de começar
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Atendimento a partir de Goiânia-GO, para todo o Brasil
+            </li>
+          </ul>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CONTATO
+       ========================================================= -->
+  <section class="section section--alt" id="contato" aria-labelledby="contato-titulo">
+    <div class="wrap">
+
+      <div class="section-head center reveal">
+        <h2 id="contato-titulo">Falar com a gente</h2>
+        <p class="lead">Escolha o canal que preferir. Respondemos em horário comercial, de segunda a sexta.</p>
+      </div>
+
+      <div class="grid grid--3">
+
+        <a class="contact-card reveal"
+           href="https://wa.me/5562936181619?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20BARDiA%20Sistemas%20e%20gostaria%20de%20falar%20com%20voc%C3%AAs."
+           target="_blank" rel="noopener">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Z"/><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.56-.35Z"/></svg>
+          </div>
+          <h3>WhatsApp</h3>
+          <span class="value">+55 (62) 93618-1619</span>
+          <span class="hint">Abre o WhatsApp com a mensagem já escrita</span>
+        </a>
+
+        <a class="contact-card reveal" data-delay="1" href="mailto:contato@bardiasistemas.com.br">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 8.2 5.6a1.5 1.5 0 0 0 1.6 0L21 7"/></svg>
+          </div>
+          <h3>E-mail</h3>
+          <span class="value">contato@bardiasistemas.com.br</span>
+          <span class="hint">Para propostas, escopo e documentos</span>
+        </a>
+
+        <div class="contact-card reveal" data-delay="2">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          </div>
+          <h3>Onde estamos</h3>
+          <span class="value">Goiânia · GO</span>
+          <span class="hint">Trabalho remoto para clientes de todo o Brasil</span>
+        </div>
+
+      </div>
+
+      <p class="contact-note reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v5M12 7.6v.6"/></svg>
+        <span>Não usamos formulário de contato: preferimos que a primeira conversa já seja direta com uma pessoa, no canal em que você vai ser respondido.</span>
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- =========================================================
+     RODAPE
+     ========================================================= -->
+<footer class="site-footer">
+  <div class="wrap">
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <a class="brand" href="#topo" aria-label="BARDiA Sistemas — voltar ao início">
+          <img class="brand-logo" src="assets/img/logo.svg" alt="BARDiA" width="816" height="171">
+          <span class="brand-suffix">Sistemas</span>
+        </a>
+        <p>Produtos próprios e sistemas web sob medida. Goiânia · GO.</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Rodapé">
+        <div class="footer-col">
+          <h3>Produtos</h3>
+          <ul>
+            <li>
+              <a href="https://perfilvivo.com.br" target="_blank" rel="noopener">
+                perfilvivo.com.br
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://perfilvivo.com.br/termos" target="_blank" rel="noopener">
+                Termos de uso
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://perfilvivo.com.br/privacidade" target="_blank" rel="noopener">
+                Política de privacidade
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Empresa</h3>
+          <ul>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#sob-medida">Sistemas sob medida</a></li>
+            <li><a href="#processo">Como trabalhamos</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contato</h3>
+          <ul>
+            <li><a href="mailto:contato@bardiasistemas.com.br">contato@bardiasistemas.com.br</a></li>
+            <li>
+              <a href="https://wa.me/5562936181619?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20BARDiA%20Sistemas." target="_blank" rel="noopener">
+                +55 (62) 93618-1619
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </a>
+            </li>
+            <li><a href="#contato">Goiânia · GO</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="ano">2026</span> BARDiA Sistemas · bardiasistemas.com.br</p>
+      <p>Feito em Goiânia.</p>
+    </div>
+
+  </div>
+</footer>
+
+<!-- =========================================================
+     JSON-LD — Organization
+     ========================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://bardiasistemas.com.br/#organizacao",
+  "name": "BARDiA Sistemas",
+  "alternateName": "BARDiA",
+  "url": "https://bardiasistemas.com.br/",
+  "logo": "https://bardiasistemas.com.br/assets/img/logo-512.png",
+  "image": "https://bardiasistemas.com.br/assets/img/og-image.png",
+  "email": "contato@bardiasistemas.com.br",
+  "telephone": "+5562936181619",
+  "description": "Empresa de software de Goiânia-GO. Desenvolve sistemas web sob medida para gestão de negócios e mantém produtos próprios (SaaS), como o PerfilVivo.",
+  "areaServed": { "@type": "Country", "name": "Brasil" },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Goiânia",
+    "addressRegion": "GO",
+    "addressCountry": "BR"
+  },
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "contactType": "vendas",
+    "email": "contato@bardiasistemas.com.br",
+    "telephone": "+5562936181619",
+    "availableLanguage": ["pt-BR"]
+  }],
+  "sameAs": ["https://perfilvivo.com.br"],
+  "makesOffer": [{
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "SoftwareApplication",
+      "name": "PerfilVivo",
+      "url": "https://perfilvivo.com.br",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Monitor de disponibilidade de perfis do Instagram, com alerta por e-mail quando o perfil volta ao ar."
+    }
+  }],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Serviços",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desenvolvimento de sistemas web sob medida" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistemas de gestão customizados" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Painéis e relatórios sob medida" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automação de processos e rotinas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Integração com sistemas e APIs" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Manutenção e suporte de sistemas web" } }
+    ]
+  }
+}
+</script>
+
+</body>
+</html>
