@@ -8,4 +8,8 @@ Desktop.ini
 .idea/
 *.swp
 
+# Ferramentas locais de geracao de imagem. Nao fazem parte do site: rodam no
+# navegador, produzem arquivos e nao precisam ser publicadas nem versionadas.
+tools/
+
 # Nada de build aqui: o site e servido exatamente como esta no repositorio.
