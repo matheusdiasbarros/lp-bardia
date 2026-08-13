@@ -476,9 +476,17 @@ a.contact-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lg); b
 .contact-card .value{ font-weight:600; color:var(--accent); overflow-wrap:anywhere; font-size:.98rem }
 .contact-card .hint{ font-size:.88rem; color:var(--muted) }
 
+/* Nota e botao do Instagram lado a lado; empilham em tela estreita. */
+.contato-extra{
+  display:flex; flex-wrap:wrap; gap:20px 28px;
+  align-items:center; justify-content:space-between;
+  margin-top:30px;
+}
+.contato-extra .btn{ flex:none }
+
 .contact-note{
-  margin-top:26px; font-size:.92rem; color:var(--muted);
-  display:flex; gap:10px; align-items:flex-start; max-width:66ch;
+  font-size:.92rem; color:var(--muted);
+  display:flex; gap:10px; align-items:flex-start; max-width:56ch;
 }
 .contact-note svg{ width:17px; height:17px; flex:none; margin-top:4px; color:var(--accent) }
 
