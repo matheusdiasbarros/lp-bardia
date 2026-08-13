@@ -19,48 +19,53 @@ BARDiA/
 ├── _redirects               Atalhos de URL (/whatsapp, /contato…) — lido pelo Cloudflare
 ├── README.md                Este arquivo
 │
-├── assets/
-│   ├── css/styles.css       Todo o visual, em 14 blocos numerados
-│   ├── js/main.js           Menu, animações e destaque do menu
-│   ├── fonts/
-│   │   ├── inter-latin.woff2      47 KB — a fonte do site, servida daqui
-│   │   ├── inter-latin-ext.woff2  83 KB — só baixa se aparecer letra fora do latim
-│   │   └── OFL.txt                licença SIL Open Font License 1.1
-│   └── img/
-│       ├── logo.svg         Lettering "BARDiA" (era Logo.svg)
-│       ├── logo-mark.svg    Monograma quadrado, sem fundo (era Logo-Quadrada.svg)
-│       ├── favicon.svg      Monograma branco sobre quadrado âmbar — ícone da aba
-│       └── …                os PNGs gerados pela ferramenta (veja abaixo)
-│
-└── tools/
-    └── gerar-imagens.html   Ferramenta local que desenha o OG e os ícones
+└── assets/
+    ├── css/styles.css       Todo o visual, em 14 blocos numerados
+    ├── js/main.js           Menu, animações e destaque do menu
+    ├── fonts/
+    │   ├── inter-latin.woff2      47 KB — a fonte do site, servida daqui
+    │   ├── inter-latin-ext.woff2  83 KB — só baixa se aparecer letra fora do latim
+    │   └── OFL.txt                licença SIL Open Font License 1.1
+    └── img/
+        ├── logo.svg              Lettering "BARDiA" (era Logo.svg)
+        ├── logo-mark.svg         Monograma quadrado, sem fundo (era Logo-Quadrada.svg)
+        ├── favicon.svg           Monograma branco sobre quadrado âmbar — ícone da aba
+        ├── og-image.jpg          1200×630 — miniatura ao compartilhar o link
+        ├── favicon-32.png        32×32 — aba em navegador que não lê SVG
+        ├── apple-touch-icon.png  180×180 — ícone no iPhone
+        ├── logo-192.png          192×192 — ícone no Android
+        └── logo-512.png          512×512 — logo da empresa na busca do Google
 ```
-
-`tools/` não faz parte do site. Pode publicar junto (o `robots.txt` já pede
-para não indexar) ou apagar a pasta antes de subir — tanto faz.
 
 ---
 
-## O que ainda falta gerar
+## As imagens
 
-Os dois SVGs já estão prontos. Faltam cinco PNGs, e todos saem da mesma
-ferramenta: abra **`tools/gerar-imagens.html`** com dois cliques, clique nos
-botões e mova os arquivos baixados para `assets/img/`.
+Está tudo gerado; nada pendente. Cada arquivo tem um destino específico:
 
-| Arquivo                 | Tamanho   | Para quê                                       |
-|-------------------------|-----------|------------------------------------------------|
-| `og-image.jpg`          | 1200×630  | Miniatura no WhatsApp, LinkedIn, Facebook e X   |
-| `favicon-32.png`        | 32×32     | Ícone da aba em navegador que não lê SVG        |
-| `apple-touch-icon.png`  | 180×180   | Ícone no iPhone/iPad ao "adicionar à tela"      |
-| `logo-192.png`          | 192×192   | Ícone no Android                                |
-| `logo-512.png`          | 512×512   | Logo da empresa no resultado de busca do Google |
+| Arquivo                 | Onde aparece                                    |
+|-------------------------|-------------------------------------------------|
+| `og-image.jpg`          | Miniatura no WhatsApp, LinkedIn, Facebook e X    |
+| `favicon.svg`           | Aba do navegador (quase todos leem SVG hoje)     |
+| `favicon-32.png`        | Aba em navegador antigo, sem suporte a SVG       |
+| `apple-touch-icon.png`  | Tela de início do iPhone/iPad                    |
+| `logo-192.png`          | Tela de início do Android                        |
+| `logo-512.png`          | Logo da empresa no resultado de busca do Google  |
 
-Na ferramenta, deixe o fundo em **âmbar** — é a opção que combina com o
-`favicon.svg` já pronto e com a cor de destaque do site.
+Os ícones usam fundo **âmbar** com o monograma em branco, igual ao
+`favicon.svg` — é o que mantém a mesma cara em qualquer navegador.
 
-Sem eles o site funciona normalmente — só fica sem miniatura ao ser
-compartilhado e sem ícone na aba. O `og-image.jpg` é o que mais faz falta:
-link sem imagem no WhatsApp tem muito menos clique.
+**Se um dia precisar refazer** (logo nova, texto diferente no OG), a
+ferramenta que desenhou tudo isso continua no histórico do Git. Ela desenha
+em `<canvas>` a partir dos traçados reais da logo — não é captura de tela:
+
+```sh
+git show 589606c:tools/gerar-imagens.html > gerar-imagens.html
+```
+
+Abra o arquivo no navegador, baixe o que precisar, mova para `assets/img/` e
+apague a ferramenta de novo. Ela ficou fora do repositório porque não faz
+parte do site.
 
 > Por que não dá para usar SVG no `og:image`: WhatsApp, Facebook e LinkedIn
 > não renderizam SVG em preview. Tem que ser PNG ou JPG.
