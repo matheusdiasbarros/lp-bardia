@@ -49,7 +49,7 @@ botões e mova os arquivos baixados para `assets/img/`.
 
 | Arquivo                 | Tamanho   | Para quê                                       |
 |-------------------------|-----------|------------------------------------------------|
-| `og-image.png`          | 1200×630  | Miniatura no WhatsApp, LinkedIn, Facebook e X   |
+| `og-image.jpg`          | 1200×630  | Miniatura no WhatsApp, LinkedIn, Facebook e X   |
 | `favicon-32.png`        | 32×32     | Ícone da aba em navegador que não lê SVG        |
 | `apple-touch-icon.png`  | 180×180   | Ícone no iPhone/iPad ao "adicionar à tela"      |
 | `logo-192.png`          | 192×192   | Ícone no Android                                |
@@ -59,11 +59,18 @@ Na ferramenta, deixe o fundo em **âmbar** — é a opção que combina com o
 `favicon.svg` já pronto e com a cor de destaque do site.
 
 Sem eles o site funciona normalmente — só fica sem miniatura ao ser
-compartilhado e sem ícone na aba. O `og-image.png` é o que mais faz falta:
+compartilhado e sem ícone na aba. O `og-image.jpg` é o que mais faz falta:
 link sem imagem no WhatsApp tem muito menos clique.
 
 > Por que não dá para usar SVG no `og:image`: WhatsApp, Facebook e LinkedIn
 > não renderizam SVG em preview. Tem que ser PNG ou JPG.
+
+> Por que o OG é JPEG e os ícones são PNG: a imagem de compartilhamento é
+> cheia de degradê, que PNG comprime mal — o mesmo desenho fica em 71 KB em
+> JPEG contra 407 KB em PNG, sem diferença visível numa miniatura de conversa.
+> Prévia acima de ~300 KB deixa de ser renderizada por alguns clientes de
+> WhatsApp. Os ícones continuam PNG porque são minúsculos e podem precisar
+> de fundo transparente.
 
 ---
 

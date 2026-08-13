@@ -84,9 +84,9 @@
     <div class="painel-topo">
       <div>
         <h2>Imagem de compartilhamento</h2>
-        <p class="meta">1200 × 630 · aparece no WhatsApp, LinkedIn, Facebook e X</p>
+        <p class="meta">1200 × 630 · JPEG · aparece no WhatsApp, LinkedIn, Facebook e X</p>
       </div>
-      <button id="btn-og">Baixar og-image.png</button>
+      <button id="btn-og">Baixar og-image.jpg</button>
     </div>
     <canvas id="c-og" width="1200" height="630"></canvas>
     <p class="status" id="status-fonte"></p>
@@ -311,8 +311,14 @@
     montarIcone('c-512', 512, 0.14);
   }
 
-  /* ------------------------------ DOWNLOAD ------------------------------ */
-  function baixar(canvas, nome) {
+  /* ------------------------------ DOWNLOAD ------------------------------
+     Os icones saem em PNG porque precisam de fundo transparente como opcao e
+     sao pequenos de qualquer jeito. A imagem de compartilhamento sai em JPEG:
+     ela e cheia de degrade, que PNG comprime mal — o mesmo desenho fica em
+     torno de 70 KB em JPEG contra 400 KB em PNG, e prévia pesada demais deixa
+     de ser renderizada por alguns clientes de WhatsApp.
+     ---------------------------------------------------------------------- */
+  function baixar(canvas, nome, tipo, qualidade) {
     canvas.toBlob(function (blob) {
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
@@ -322,11 +328,11 @@
       a.click();
       document.body.removeChild(a);
       setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
-    }, 'image/png');
+    }, tipo || 'image/png', qualidade);
   }
 
   document.getElementById('btn-og').addEventListener('click', function () {
-    baixar(document.getElementById('c-og'), 'og-image.png');
+    baixar(document.getElementById('c-og'), 'og-image.jpg', 'image/jpeg', 0.92);
   });
 
   Array.prototype.forEach.call(document.querySelectorAll('button[data-alvo]'), function (b) {
